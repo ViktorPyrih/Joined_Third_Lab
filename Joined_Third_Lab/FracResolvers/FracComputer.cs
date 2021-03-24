@@ -13,8 +13,17 @@ namespace Joined_Third_Lab
             long intPart = frac.nom / frac.denom;
             long val = frac.nom % frac.denom;
             long newNom = intPart != 0 ? Math.Abs(val) : val;
+            string result = "";
+            if (intPart != 0)
+            {
+                result += intPart;
+            }
+            if (newNom != 0)
+            {
+                result += " " + new Structures.Frac(newNom, frac.denom);
+            }
 
-            return (intPart != 0 ? Convert.ToString(intPart) : "") + new Structures.Frac(newNom, frac.denom);
+            return result;
         }
 
         public double doubleVal(Structures.Frac frac) 

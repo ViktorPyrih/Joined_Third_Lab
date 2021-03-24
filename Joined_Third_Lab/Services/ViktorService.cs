@@ -16,14 +16,15 @@ namespace Joined_Third_Lab.Services
             Structures.Frac frac1 = input.inputFrac();
             Structures.Frac frac2 = input.inputFrac();
             int n = input.inputNaturalInt();
-            Console.WriteLine("First frac with int part is " + computer.ToStringWithIntegerPart(frac1));
-            Console.WriteLine("Second frac with int part is " + computer.ToStringWithIntegerPart(frac2));
-            Console.WriteLine(frac1 + " + " + frac2 + " = " + computer.plus(frac1, frac2));
-            Console.WriteLine(frac1 + " - " + frac2 + " = " + computer.minus(frac1, frac2));
-            Console.WriteLine(frac1 + " * " + frac2 + " = " + computer.multiply(frac1, frac2));
-            Console.WriteLine(frac1 + " / " + frac2 + " = " + computer.divide(frac1, frac2));
+            Console.WriteLine("First frac double value is {0}", Math.Round(computer.doubleVal(frac1), 3));
+            Console.WriteLine("Second frac double value is {0}", Math.Round(computer.doubleVal(frac2), 3));
+            Console.WriteLine(frac1 + " + " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.plus(frac1, frac2)));
+            Console.WriteLine(frac1 + " - " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.minus(frac1, frac2)));
+            Console.WriteLine(frac1 + " * " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.multiply(frac1, frac2)));
+            Console.WriteLine(frac1 + " / " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.divide(frac1, frac2)));
             Console.WriteLine($"First sum({n}) = n/(n + 1) = " + computer.caclSum1(n));
             Console.WriteLine($"Second sum({n}) = (n + 1)/(2*n) = " + computer.caclSum2(n));
+            Console.WriteLine(new string('-', 35));
         }
 
         public void processTask2() 
