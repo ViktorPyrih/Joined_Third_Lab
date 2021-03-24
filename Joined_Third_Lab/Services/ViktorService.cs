@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Joined_Third_Lab.Services
+{
+    public class ViktorService
+    {
+        public void processTask1() 
+        {
+            Input input = new Input();
+            IFrac computer = new FracComputer();
+            Console.WriteLine("Print some data to run this task(2 fracs and single natural val):");
+            Structures.Frac frac1 = input.inputFrac();
+            Structures.Frac frac2 = input.inputFrac();
+            int n = input.inputNaturalInt();
+            Console.WriteLine("First frac with int part is " + computer.ToStringWithIntegerPart(frac1));
+            Console.WriteLine("Second frac with int part is " + computer.ToStringWithIntegerPart(frac2));
+            Console.WriteLine(frac1 + " + " + frac2 + " = " + computer.plus(frac1, frac2));
+            Console.WriteLine(frac1 + " - " + frac2 + " = " + computer.minus(frac1, frac2));
+            Console.WriteLine(frac1 + " * " + frac2 + " = " + computer.multiply(frac1, frac2));
+            Console.WriteLine(frac1 + " / " + frac2 + " = " + computer.divide(frac1, frac2));
+            Console.WriteLine($"First sum({n}) = n/(n + 1) = " + computer.caclSum1(n));
+            Console.WriteLine($"Second sum({n}) = (n + 1)/(2*n) = " + computer.caclSum2(n));
+        }
+
+        public void processTask2() 
+        {
+            Console.WriteLine("Result of the query: ");
+            List<Structures.Student> list = Adapter.StudentInfoAdapter.students;
+            list = list.Where(stud => stud.scholarship == 0).ToList();
+            var result = list.Select(stud => new { Student = stud, average = (stud.mathematicsMark + stud.informaticsMark + stud.physicsMark) / 3 });
+            int k = 0;
+            foreach (var val in result) 
+            {
+                k++;
+                Structures.Student student = val.Student;
+                Console.WriteLine("Number     Name     Surname     Patronymic       Average mark");
+                Console.WriteLine($"{k, -11}{student.firstName, -9}{student.surName, -12}{student.patronymic, -17}{0:f1}", val.average);
+            }
+            Console.WriteLine(new string('-', 61));
+        }
+    }
+}

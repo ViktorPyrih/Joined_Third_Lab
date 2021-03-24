@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,10 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NameEnum.cs" />
+    <Compile Include="Adapter\StudentInfoAdapter.cs" />
+    <Compile Include="FracResolvers\FracComputer.cs" />
+    <Compile Include="FracResolvers\IFrac.cs" />
+    <Compile Include="Input\Input.cs" />
+    <Compile Include="Enums\NameEnum.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskEnum.cs" />
+    <Compile Include="Enums\TaskEnum.cs" />
+    <Compile Include="Services\ViktorService.cs" />
+    <Compile Include="Structures\Frac.cs" />
+    <Compile Include="Structures\Student.cs" />
+    <Compile Include="TaskManagers\TaskManager.cs" />
+    <Compile Include="TaskManagers\TaskManagerImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

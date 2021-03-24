@@ -10,6 +10,7 @@ namespace Joined_Third_Lab
     {
         VIKTOR = 1,
         MYKYTA,
-        MAKSYM
+        MAKSYM,
+        EXIT
     }
 }
