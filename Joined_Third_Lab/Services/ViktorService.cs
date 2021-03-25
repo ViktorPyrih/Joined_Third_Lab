@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Joined_Third_Lab.Services
 {
@@ -21,9 +22,23 @@ namespace Joined_Third_Lab.Services
             Console.WriteLine(frac1 + " + " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.plus(frac1, frac2)));
             Console.WriteLine(frac1 + " - " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.minus(frac1, frac2)));
             Console.WriteLine(frac1 + " * " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.multiply(frac1, frac2)));
-            Console.WriteLine(frac1 + " / " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.divide(frac1, frac2)));
+            try
+            {
+                Console.WriteLine(frac1 + " / " + frac2 + " = " + computer.ToStringWithIntegerPart(computer.divide(frac1, frac2)));
+            }
+            catch (ArithmeticException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             Console.WriteLine($"First sum({n}) = n/(n + 1) = " + computer.caclSum1(n));
-            Console.WriteLine($"Second sum({n}) = (n + 1)/(2*n) = " + computer.caclSum2(n));
+            try
+            {
+                Console.WriteLine($"Second sum({n}) = (n + 1)/(2*n) = " + computer.caclSum2(n));
+            }
+            catch (ArgumentException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             Console.WriteLine(new string('-', 35));
         }
 

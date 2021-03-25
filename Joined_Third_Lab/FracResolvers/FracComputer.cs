@@ -10,17 +10,24 @@ namespace Joined_Third_Lab
     {
         public string ToStringWithIntegerPart(Structures.Frac frac)
         {
-            long intPart = frac.nom / frac.denom;
-            long val = frac.nom % frac.denom;
-            long newNom = intPart != 0 ? Math.Abs(val) : val;
             string result = "";
-            if (intPart != 0)
+            if (frac.nom == 0)
             {
-                result += intPart;
+                result += "0";
             }
-            if (newNom != 0)
+            else 
             {
-                result += " " + new Structures.Frac(newNom, frac.denom);
+                long intPart = frac.nom / frac.denom;
+                long val = frac.nom % frac.denom;
+                long newNom = intPart != 0 ? Math.Abs(val) : val;
+                if (intPart != 0)
+                {
+                    result += intPart;
+                }
+                if (newNom != 0)
+                {
+                    result += " " + new Structures.Frac(newNom, frac.denom);
+                }
             }
 
             return result;
@@ -57,7 +64,7 @@ namespace Joined_Third_Lab
         public Structures.Frac divide(Structures.Frac frac1, Structures.Frac frac2) {
             if (frac2.nom == 0) 
             {
-                throw new ArithmeticException("Error! Dividing by '0'!");
+                throw new ArithmeticException("Dividing by zero!");
             }
 
             return multiply(frac1, new Structures.Frac(frac2.denom, frac2.nom));
@@ -65,7 +72,6 @@ namespace Joined_Third_Lab
 
         public Structures.Frac caclSum1(int n) 
         {
-            if (n <= 0) throw new ArgumentException("'n' must be greater than 0!");
             Structures.Frac frac = new Structures.Frac(0, 1);
             for (int i = 1; i <= n; i++) 
             {
@@ -78,7 +84,7 @@ namespace Joined_Third_Lab
 
         public Structures.Frac caclSum2(int n)
         {
-            if (n <= 1) throw new ArgumentException("'n' must be greater than 0!");
+            if (n <= 1) throw new ArgumentException("For second sum 'n' must be greater than 1!");
             Structures.Frac frac = new Structures.Frac(1, 1);
             for (int i = 2; i <= n; i++)
             {

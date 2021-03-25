@@ -20,6 +20,10 @@ namespace Joined_Third_Lab.Structures
             {
                 return "0";
             }
+            if (denom == 1) 
+            {
+                return Convert.ToString(nom);
+            }
             string result = "";
             if (nom * denom < 0) 
             {

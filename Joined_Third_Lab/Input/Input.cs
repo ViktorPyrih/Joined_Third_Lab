@@ -52,13 +52,22 @@ namespace Joined_Third_Lab
         public Structures.Frac inputFrac() 
         {
             long[] arr;
+            long denom;
             try
             {
                 arr = Console.ReadLine().Split('/').Select(long.Parse).ToArray();
-                if (arr.Length != 2)
+                if (arr.Length == 0 || arr.Length > 2 || arr.Length == 2 && arr[1] == 0)
                 {
                     Console.WriteLine("Wrong input! Repeat, please:");
                     return inputFrac();
+                }
+                if (arr.Length == 1)
+                {
+                    denom = 1;
+                } 
+                else 
+                {
+                    denom = arr[1];
                 }
             } 
             catch (FormatException) 
@@ -67,7 +76,7 @@ namespace Joined_Third_Lab
                 return inputFrac();
             }
 
-            return new Structures.Frac(arr[0], arr[1]);
+            return new Structures.Frac(arr[0], denom);
         }
     }
 }
