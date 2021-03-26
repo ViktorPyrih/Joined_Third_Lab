@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Joined_Third_Lab.Structures
 {
@@ -21,8 +22,10 @@ namespace Joined_Third_Lab.Structures
 
         public Student(string lineWithAllData)
         {
-            string[] data = lineWithAllData.Substring(0, lineWithAllData.Length - 1).Replace(")", "").Split();
-            number = int.Parse(data[0]);
+            string s;
+            s = (lineWithAllData.Contains(";") ? lineWithAllData.Substring(0, lineWithAllData.Length - 1) : lineWithAllData);
+            string[] data = s.Split();
+            number = int.Parse(data[0].Replace(")", "").Replace(".", ""));
             surName = data[1];
             firstName = data[2];
             patronymic = data[3];
@@ -32,6 +35,8 @@ namespace Joined_Third_Lab.Structures
             mathematicsMark = byte.Parse(data[6]);
             physicsMark = byte.Parse(data[7]);
             informaticsMark = byte.Parse(data[8]);
+            string pattern = @"\D";
+            data[9] = Regex.Replace(data[9], pattern, "");
             scholarship = int.Parse(data[9]);
         }
     }
