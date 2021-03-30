@@ -78,5 +78,44 @@ namespace Joined_Third_Lab
 
             return new Structures.Frac(arr[0], denom);
         }
+
+        public Structures.Time inputTime()
+        {
+            int[] arr;
+            int h, m, s;
+            try
+            {
+                arr = Console.ReadLine().Split('.').Select(int.Parse).ToArray();
+                if (arr.Length == 0 || arr.Length > 3 )
+                {
+                    Console.WriteLine("Wrong input! Repeat, please:");
+                    return inputTime();
+                }
+                if (arr.Length == 1)
+                {
+                    h = arr[0];
+                    m = 0;
+                    s = 0;
+                }
+                if (arr.Length == 2)
+                {
+                    h = arr[0];
+                    m = arr[1];
+                    s = 0;
+                }
+                else
+                {
+                    h = arr[0];
+                    m = arr[1];
+                    s = arr[2];
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Wrong input! Repeat, please:");
+                return inputTime();
+            }
+            return new Structures.Time(h, m, s);
+        }
     }
 }

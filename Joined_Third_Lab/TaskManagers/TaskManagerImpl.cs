@@ -29,14 +29,15 @@ namespace Joined_Third_Lab
             throw new NotImplementedException();
         }
 
+        private Services.MaksymService service1 = new Services.MaksymService();
         public void doTask3_1()
         {
-            throw new NotImplementedException();
+            service1.processTask1();
         }
 
         public void doTask_3_2()
         {
-            throw new NotImplementedException();
+            service1.processTask2();
         }
     }
 }
