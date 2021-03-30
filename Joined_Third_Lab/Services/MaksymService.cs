@@ -35,17 +35,17 @@ namespace Joined_Third_Lab.Services
         {
             Console.WriteLine("Result of the query: ");
             List<Structures.Student> list = Adapter.StudentInfoAdapter.students;
-            list = list.Where(stud => stud.scholarship == 0).ToList();
-            var result = list.Select(stud => new { Student = stud, average = (stud.mathematicsMark + stud.informaticsMark + stud.physicsMark) / 3 });
+            list = list.Where(stud => stud.scholarship == 0 && stud.mathematicsMark >= 3 && stud.informaticsMark >= 3 && stud.physicsMark >= 3).ToList();
+            var result = list.Select(stud => new { Student = stud });
             int k = 0;
             foreach (var val in result)
             {
                 k++;
                 Structures.Student student = val.Student;
-                Console.WriteLine("Number     Name     Surname     Patronymic       Average mark");
-                Console.WriteLine($"{k,-11}{student.firstName,-9}{student.surName,-12}{student.patronymic,-17}{0:f1}", val.average);
+                Console.WriteLine("Number     Name     Surname     Patronymic");
+                Console.WriteLine($"{k,-11}{student.firstName,-9}{student.surName,-12}{student.patronymic,-17}");
             }
-            Console.WriteLine(new string('-', 61));
+            Console.WriteLine(new string('=', 61));
         }
     }
 }
