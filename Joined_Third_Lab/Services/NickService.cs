@@ -44,7 +44,7 @@ namespace Joined_Third_Lab.Services
             var result = list.Select(stud => new { Student = stud });
             int k = 0;
             sb.AppendLine("Number     Surname     Mathematics     Informatics     Physics     Scholarship(edited)");
-            Console.WriteLine("Number     Surname     Mathematics     Informatics     Physics     Sholarship(edited)");
+            Console.WriteLine("Number     Surname     Mathematics     Informatiсs     Physics     Sholarship(edited)");
             foreach (var val in result)
             {
                 k++;
