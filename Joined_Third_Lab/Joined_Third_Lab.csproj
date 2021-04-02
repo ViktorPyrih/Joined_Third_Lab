@@ -52,7 +52,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enums\TaskEnum.cs" />
-    <Compile Include="Services\NickService.cs" />
     <Compile Include="Services\MaksymService.cs" />
     <Compile Include="Services\ViktorService.cs" />
     <Compile Include="Structures\Time.cs" />

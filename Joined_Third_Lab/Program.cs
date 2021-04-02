@@ -76,7 +76,7 @@ namespace Joined_Third_Lab
                             manager.doTask2_2();
                             break;
                         case NameEnum.MAKSYM:
-                            manager.doTask3_2();
+                            manager.doTask_3_2();
                             break;
                         case NameEnum.EXIT:
                             goto Label2;

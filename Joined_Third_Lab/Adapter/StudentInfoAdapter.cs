@@ -10,11 +10,10 @@ namespace Joined_Third_Lab.Adapter
     public class StudentInfoAdapter
     {
         public static List<Structures.Student> students { get; set; } = new List<Structures.Student>(); 
-        private const string PATH = "input_file.txt";
-
+        private string path = "input_file.txt";
         public void subtractStudentInfoList() 
         {
-            using (StreamReader sr = new StreamReader(PATH))
+            using (StreamReader sr = new StreamReader(path))
             {
                 while (!sr.EndOfStream)
                 {

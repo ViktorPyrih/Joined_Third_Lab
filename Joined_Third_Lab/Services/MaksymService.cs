@@ -38,11 +38,11 @@ namespace Joined_Third_Lab.Services
             list = list.Where(stud => stud.scholarship == 0 && stud.mathematicsMark >= 3 && stud.informaticsMark >= 3 && stud.physicsMark >= 3).ToList();
             var result = list.Select(stud => new { Student = stud });
             int k = 0;
-            Console.WriteLine("Number     Name     Surname     Patronymic");
             foreach (var val in result)
             {
                 k++;
                 Structures.Student student = val.Student;
+                Console.WriteLine("Number     Name     Surname     Patronymic");
                 Console.WriteLine($"{k,-11}{student.firstName,-9}{student.surName,-12}{student.patronymic,-17}");
             }
             Console.WriteLine(new string('=', 61));
