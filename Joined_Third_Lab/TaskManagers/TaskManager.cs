@@ -13,6 +13,6 @@ namespace Joined_Third_Lab
         void doTask2_1();
         void doTask2_2();
         void doTask3_1();
-        void doTask_3_2();
+        void doTask3_2();
     }
 }

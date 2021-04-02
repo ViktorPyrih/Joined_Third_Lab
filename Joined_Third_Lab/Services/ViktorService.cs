@@ -47,14 +47,14 @@ namespace Joined_Third_Lab.Services
             Console.WriteLine("Result of the query: ");
             List<Structures.Student> list = Adapter.StudentInfoAdapter.students;
             list = list.Where(stud => stud.scholarship == 0).ToList();
-            var result = list.Select(stud => new { Student = stud, average = (stud.mathematicsMark + stud.informaticsMark + stud.physicsMark) / 3 });
+            var result = list.Select(stud => new { Student = stud, average = (stud.mathematicsMark + stud.informaticsMark + stud.physicsMark) / 3.0 });
             int k = 0;
+            Console.WriteLine("Number     Name     Surname     Patronymic       Average mark");
             foreach (var val in result) 
             {
                 k++;
                 Structures.Student student = val.Student;
-                Console.WriteLine("Number     Name     Surname     Patronymic       Average mark");
-                Console.WriteLine($"{k, -11}{student.firstName, -9}{student.surName, -12}{student.patronymic, -17}{0:f1}", val.average);
+                Console.WriteLine($"{k, -11}{student.firstName, -9}{student.surName, -12}{student.patronymic, -17}{val.average:f1}");
             }
             Console.WriteLine(new string('-', 61));
         }
