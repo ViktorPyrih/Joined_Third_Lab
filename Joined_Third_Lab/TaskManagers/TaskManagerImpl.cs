@@ -19,14 +19,15 @@ namespace Joined_Third_Lab
             service.processTask2();
         }
 
+        private Services.NickService service2 = new Services.NickService();
         public void doTask2_1()
         {
-            throw new NotImplementedException();
+            service2.processTask1();
         }
 
         public void doTask2_2()
         {
-            throw new NotImplementedException();
+            service2.processTask2();
         }
 
         private Services.MaksymService service1 = new Services.MaksymService();
@@ -35,7 +36,7 @@ namespace Joined_Third_Lab
             service1.processTask1();
         }
 
-        public void doTask_3_2()
+        public void doTask3_2()
         {
             service1.processTask2();
         }

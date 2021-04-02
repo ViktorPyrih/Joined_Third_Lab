@@ -3,13 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Joined_Third_Lab.Services
 {
-    class MaksymService
+    class NickService
     {
+        private const string FILE = "data_new.txt";
+
         public void processTask1()
         {
             Input input = new Input();
@@ -25,7 +28,7 @@ namespace Joined_Third_Lab.Services
             Console.WriteLine("AddOneMinute realise: {0}", computer.AddOneMinute(time1));
             Console.WriteLine("AddOneHour realise: {0}", computer.AddOneHour(time1));
             Console.WriteLine("AddSeconds realise: {0}", computer.AddSeconds(time1, s));
-            Console.WriteLine("Difference realise: {0}", computer.Difference(time1,time2));
+            Console.WriteLine("Difference realise: {0}", computer.Difference(time1, time2));
             Console.WriteLine("AddOneHour realise: {0}", computer.WhatLesson(time1));
 
             Console.WriteLine(new string('=', 35));
@@ -33,19 +36,31 @@ namespace Joined_Third_Lab.Services
 
         public void processTask2()
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Result of the query: ");
             Console.WriteLine("Result of the query: ");
             List<Structures.Student> list = Adapter.StudentInfoAdapter.students;
-            list = list.Where(stud => stud.scholarship == 0 && stud.mathematicsMark >= 3 && stud.informaticsMark >= 3 && stud.physicsMark >= 3).ToList();
+            list = list.Where(stud => stud.mathematicsMark <= 2 || stud.informaticsMark <= 2 || stud.physicsMark <= 2 && stud.scholarship != 0).ToList();
             var result = list.Select(stud => new { Student = stud });
             int k = 0;
-            Console.WriteLine("Number     Name     Surname     Patronymic");
+            sb.AppendLine("Number     Surname     Mathematics     Informatics     Physics     Scholarship(edited)");
+            Console.WriteLine("Number     Surname     Mathematics     Informatics     Physics     Sholarship(edited)");
             foreach (var val in result)
             {
                 k++;
                 Structures.Student student = val.Student;
-                Console.WriteLine($"{k,-11}{student.firstName,-9}{student.surName,-12}{student.patronymic,-17}");
+                sb.AppendLine($"{k,-11}{student.surName,-12}{student.mathematicsMark,-16}{student.informaticsMark,-16}{student.physicsMark,-12}{0, -10}");
+                Console.WriteLine($"{k,-11}{student.surName,-12}{student.mathematicsMark,-16}{student.informaticsMark,-16}{student.physicsMark,-12}{0,-10}");
             }
+            sb.AppendLine(new string('=', 61));
             Console.WriteLine(new string('=', 61));
+            writeToFile(sb.ToString());
+        }
+
+        private void writeToFile(string str)
+        {
+            using (StreamWriter sw = new StreamWriter("data_new.txt"))
+                sw.WriteLine(str);
         }
     }
 }

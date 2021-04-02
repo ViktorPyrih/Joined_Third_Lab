@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Joined_Third_Lab.Structures
 {
@@ -31,7 +32,16 @@ namespace Joined_Third_Lab.Structures
             patronymic = data[3];
             sex = Convert.ToChar(data[4]);
             int[] arr = data[5].Split('.').Select(int.Parse).ToArray();
-            dateOfBirth = new DateTime(arr[2], arr[1], arr[0]);
+            try
+            {
+                dateOfBirth = new DateTime(arr[2], arr[1], arr[0]);
+            }
+            catch (ArgumentOutOfRangeException e) 
+            {
+                MessageBox.Show("Something went wrong in the file!");
+                
+                throw e;
+            }
             mathematicsMark = byte.Parse(data[6]);
             physicsMark = byte.Parse(data[7]);
             informaticsMark = byte.Parse(data[8]);
