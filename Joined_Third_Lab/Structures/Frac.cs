@@ -11,8 +11,10 @@ namespace Joined_Third_Lab.Structures
         public long nom, denom;
         public Frac(long nom, long denom)
         {
-            this.nom = nom;
-            this.denom = denom;
+            FracComputer fracComp = new FracComputer();
+            long divisor = fracComp.findGreatestCommonDivisor(Math.Abs(nom), Math.Abs(denom));
+            this.nom = nom / divisor;
+            this.denom = denom / divisor;
         }
         public override string ToString()
         {

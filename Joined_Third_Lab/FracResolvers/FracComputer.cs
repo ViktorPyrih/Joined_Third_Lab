@@ -17,16 +17,20 @@ namespace Joined_Third_Lab
             }
             else 
             {
-                long intPart = frac.nom / frac.denom;
-                long val = frac.nom % frac.denom;
-                long newNom = intPart != 0 ? Math.Abs(val) : val;
+                long divisor = findGreatestCommonDivisor(Math.Abs(frac.nom), Math.Abs(frac.denom));
+                long intPart = Math.Abs(frac.nom) / Math.Abs(frac.denom);
+                if (frac.nom < 0)
+                {
+                    result += "-";
+                }
+                long newNom = Math.Abs(frac.nom) % Math.Abs(frac.denom);
                 if (intPart != 0)
                 {
                     result += intPart;
                 }
                 if (newNom != 0)
                 {
-                    result += " " + new Structures.Frac(newNom, frac.denom);
+                    result += " " + new Structures.Frac(newNom, Math.Abs(frac.denom));
                 }
             }
 
@@ -35,15 +39,15 @@ namespace Joined_Third_Lab
 
         public double doubleVal(Structures.Frac frac) 
         {
-            return (double)frac.nom / frac.denom;
+            return (double) frac.nom / frac.denom;
         }
 
         public Structures.Frac plus(Structures.Frac frac1, Structures.Frac frac2) 
         {
             long newNom = frac1.nom * frac2.denom + frac2.nom * frac1.denom;
             long newDenom = frac1.denom * frac2.denom;
-            long greatestCommonDivisor = findGreatestCommonDivisor(newNom, newDenom);
-
+            long greatestCommonDivisor = findGreatestCommonDivisor(Math.Abs(newNom), Math.Abs(newDenom));
+            
             return new Structures.Frac(newNom / greatestCommonDivisor, newDenom / greatestCommonDivisor);
         }
 
@@ -56,7 +60,7 @@ namespace Joined_Third_Lab
         {
             long newNom = frac1.nom * frac2.nom;
             long newDenom = frac1.denom * frac2.denom;
-            long greatestCommonDivisor = findGreatestCommonDivisor(newNom, newDenom);
+            long greatestCommonDivisor = findGreatestCommonDivisor(Math.Abs(newNom), Math.Abs(newDenom));
 
             return new Structures.Frac(newNom / greatestCommonDivisor, newDenom / greatestCommonDivisor);
         }
@@ -95,7 +99,7 @@ namespace Joined_Third_Lab
             return frac;
         }
 
-        private long findGreatestCommonDivisor(long a, long b) 
+        public long findGreatestCommonDivisor(long a, long b) 
         {
             a = Math.Abs(a);
             b = Math.Abs(b);
