@@ -42,12 +42,23 @@ namespace Joined_Third_Lab.Structures
                 
                 throw e;
             }
-            mathematicsMark = byte.Parse(data[6]);
-            physicsMark = byte.Parse(data[7]);
-            informaticsMark = byte.Parse(data[8]);
+            mathematicsMark = Resolver.resolveMark(data[6]);
+            physicsMark = Resolver.resolveMark(data[7]);
+            informaticsMark = Resolver.resolveMark(data[8]);
             string pattern = @"\D";
             data[9] = Regex.Replace(data[9], pattern, "");
             scholarship = int.Parse(data[9]);
+        }
+    }
+    static class Resolver {
+        public static byte resolveMark(string s)
+        {
+            if (byte.TryParse(s, out byte b))
+            {
+                return b;
+            }
+
+            return 0;
         }
     }
 }

@@ -17,9 +17,8 @@ namespace Joined_Third_Lab
             }
             else 
             {
-                long divisor = findGreatestCommonDivisor(Math.Abs(frac.nom), Math.Abs(frac.denom));
                 long intPart = Math.Abs(frac.nom) / Math.Abs(frac.denom);
-                if (frac.nom < 0)
+                if (frac.nom * frac.denom < 0)
                 {
                     result += "-";
                 }
