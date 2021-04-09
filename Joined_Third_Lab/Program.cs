@@ -84,6 +84,8 @@ namespace Joined_Third_Lab
                             goto Label1;
                     }
                     goto Label1;
+                default:
+                    goto Label2;
             }
         Label2:
             MessageBox.Show("Process has finished!");

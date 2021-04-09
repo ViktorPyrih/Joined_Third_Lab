@@ -9,6 +9,7 @@ namespace Joined_Third_Lab
     public enum TaskEnum
     {
         TASK_1 = 1,
-        TASK_2
+        TASK_2,
+        EXIT
     }
 }
